@@ -40,6 +40,25 @@ Proposed solution is either using MacOS to upload the code or copying the code f
 - Install required library: Tools -> Manage Libraries -> Search "Arduino_LSM6DSOX" -> Install  
 - Write code to access accelerometer and gyroscope data  
 
+## Accessing published data on Host 
+The Arduino Nano RP2040 Connect is connected to host computer with a USB so serial connection exists
+
+### Run Micro-ROS Agent 
+    ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
+![image](https://user-images.githubusercontent.com/94715242/219905559-a5b8892d-9ea5-4479-926b-c9e814b2274f.png)
+ 
+### Disconnect and connect the board
+![image](https://user-images.githubusercontent.com/94715242/219905603-d9f27bff-201d-434a-8687-d9df25faeccc.png)
+  
+  The client, session, topic,and publisher will be created.  
+### Check topic list 
+In a new terminal check the list of topics.  
+
+    ros2 topic list
+### Echo topic 
+    ros2 topic echo /rp2040_imu_info_topic
+  
+
 Resources:  
 [1] https://adityakamath.github.io/2022-06-19-microros-examples/  
 [2] https://docs.arduino.cc/tutorials/nano-rp2040-connect/rp2040-imu-basics  
